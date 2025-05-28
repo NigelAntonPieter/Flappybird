@@ -21,6 +21,7 @@ public class LoopGround : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.instance.playing) return;
         _renderer.size = new Vector2(_renderer.size.x + _speed * Time.deltaTime, _renderer.size.y);
         if (_renderer.size.x > _width)
         {

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Compilation;
 using UnityEngine;
 
 public class MovePipe : MonoBehaviour
@@ -12,6 +11,7 @@ public class MovePipe : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameManager.instance.playing) return;
         transform.position += Vector3.left * _speed * Time.deltaTime;
     }
 }

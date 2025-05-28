@@ -31,15 +31,17 @@ public class Score : MonoBehaviour
     // Update is called once per frame
    private void UpdateHighScore()
    {
-        if(_score > PlayerPrefs.GetInt("HighScore"))
+        if (_score > PlayerPrefs.GetInt("HighScore"))
         {
+            PlayerPrefs.SetString("NewHighScore", "true");
             PlayerPrefs.SetInt("HighScore", _score);
-            _highScoreText.text = _score.ToString();  
+            _highScoreText.text = _score.ToString();
         }
    }
 
     public void UpdateScore()
     {
+        GameObject.Find("Audio_Flap").GetComponent<AudioSource>().PlayOneShot(Resources.Load<AudioClip>("Sounds/point"));
         _score++;
         _currentScoreText.text = _score.ToString();
         UpdateHighScore();
